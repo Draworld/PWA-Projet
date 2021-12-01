@@ -1,0 +1,39 @@
+<!-- Q2) Placer la balise de votre composant TodoList ici -->
+<app-todo-list></app-todo-list>
+
+<hr/>
+<!-- Q1) Pour tester rapidement -->
+<h1>Liste de choses à faire PWA - TP3 (debug)</h1>
+<form id="addToDo" (ngSubmit)="append(newToDo.value)">
+  <input #newToDo >
+  <input type="submit" class="btn btn-" value="Ajouter à la liste">
+</form>
+<ul *ngIf="obsTodoList|async as TDL" #list >
+  <li *ngFor="let e of TDL.items, index as i">
+  {{e|json}}
+    <input type="checkbox" class="" [checked]="e.isDone" (ngModel)="e.isDone"    >
+  </li>
+
+
+</ul>
+
+<h2> La version sans tout le texte</h2>
+<ul *ngIf="obsTodoList|async as TDL" #list >
+  <li *ngFor="let e of TDL.items, index as i">
+  {{e.label}}
+    <input type="checkbox" class="" [checked]="e.isDone"   (ngModelChange)="uptdateVal({isDone: $event}, e)"  >
+    <input type="button" (click)="supprItem(e)" value="Supprimer">
+  </li>
+</ul>
+
+<h2> La version un peu plus propre du code</h2>
+<ul *ngIf="obsTodoList|async as TDL" #list >
+  <li *ngFor="let e of TDL.items, index as i">
+  {{e.label}}
+    <input type="checkbox" class="" [ngModel]="e.isDone"   (ngModelChange)="uptdateVal({isDone:$event},e)"  />
+      <form (ngSubmit)="uptdateVal({label: newlabel.value},e)">
+      <input type="text" [ngModel]="e.label" class="" #newlabel />
+    </form>
+    <input type="button" (click)="supprItem(e)" value="Supprimer"/>
+  </li>
+</ul>
