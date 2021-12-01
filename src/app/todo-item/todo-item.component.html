@@ -2,8 +2,10 @@
 <div class="view">
   <input class="toggle"
          type="checkbox"
-         name="done" (click)="uptdate(newTextInput)"/>
-  <label #newLabel class="texte" >{{Data.label}}</label>
+         [ngModel]="Data.isDone"
+         (ngModelChange)="update({isDone : $event})"
+         name="done"/>
+  <label  class="text" [ngStyle]=" {'text-decoration': Data.isDone? 'line-through':'null'}" (dblclick)="isEditing= true">{{Data.label}}</label>
   <button class="destroy" (click)="remove()"></button>
 </div>
 <form>

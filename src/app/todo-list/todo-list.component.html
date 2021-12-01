@@ -16,10 +16,9 @@
     <input class="toggle-all"
            type="checkbox"
            name="toggleAll" />
-    <label for="toggleAll">Mark all as complete</label>
     <ul class="todo-list">
-      <li *ngFor="let e of TDL.items, index as i" >
-        <app-todo-item [Data]="e" (uptdateEvt)="uptdateVal($event,e)" (removeEvt)="supprItem(e)"></app-todo-item>
+      <li *ngFor="let e of TDL.items, index as i" [class.editing]="edition.isEditing" >
+        <app-todo-item [Data]="e" (updateEvt)="uptdateVal($event,e)" (removeEvt)="supprItem(e)"  #edition></app-todo-item>
       </li>
     </ul>
   </section>
@@ -27,13 +26,13 @@
     <span class="todo-count"><strong></strong> restantes</span>
     <ul class="filters">
       <li>
-        <a class="filterAll">Tous</a>
+        <a class="filterAll" (click)="f = fALL">Tous</a>
       </li>
       <li>
-        <a class="filterActives">Actifs</a>
+        <a class="filterActives" (click)="f = fALL">Actifs</a>
       </li>
       <li>
-        <a class="filterCompleted">Complétés</a>
+        <a class="filterCompleted" (click)="f = fALL">Complétés</a>
       </li>
     </ul>
     <button class="clear-completed">Supprimer cochées</button>
@@ -52,16 +51,17 @@
     <input type="button" (click)="supprItem(e)" value="Supprimer">
   </li>
 </ul>
-  -->
+-->
 
-<h2> La version un peu plus propre du code</h2>
-<ul *ngIf="obsTodoList|async as TDL" #list>
-  <li *ngFor="let e of TDL.items, index as i">
-    {{e.label}}
-    <input type="checkbox" class="" [ngModel]="e.isDone" (ngModelChange)="uptdateVal({isDone:$event},e)" />
-    <form (ngSubmit)="uptdateVal({label: newlabel.value},e)">
-      <input type="text" [ngModel]="e.label" class="" #newlabel />
-    </form>
-    <input type="button" (click)="supprItem(e)" value="Supprimer" />
-  </li>
-</ul>
+<!--<h2> La version un peu plus propre du code</h2>-->
+<!--<ul *ngIf="obsTodoList|async as TDL" #list>-->
+<!--  <li *ngFor="let e of TDL.items, index as i">-->
+<!--    {{e.label}}-->
+<!--    <input type="checkbox" class="" [ngModel]="e.isDone" (ngModelChange)="uptdateVal({isDone:$event},e)" />-->
+<!--    <form (ngSubmit)="uptdateVal({label: newlabel.value},e)">-->
+<!--      <input type="text" [ngModel]="e.label" class="" #newlabel name="toto"/>-->
+<!--    </form>-->
+<!--    <input type="button" (click)="supprItem(e)" value="Supprimer" />-->
+<!--  </li>-->
+<!--</ul>-->
+
