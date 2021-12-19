@@ -72,11 +72,15 @@ export class TodoListComponent implements OnInit {
     return this.service.getTotalCount();
   }
  // fonction retour arrière
-  public undo = (): TodolistService =>
-    this.service = this.service.undo()
+  public retour = (): TodolistService => {
+    console.log("dans retour");
+    return this.service = this.service.undo();
+  }
   // fonction retour avant
-  public redo = (): TodolistService =>
-    this.service = this.service.redo()
+  public revenir = (): TodolistService => {
+    console.log("dans revenir");
+    return this.service = this.service.redo();
+  }
   ngOnInit(): void {
   }
 

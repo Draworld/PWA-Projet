@@ -20,8 +20,8 @@
                 name="toggleAll"
              [checked]="getNumberItems()==0" />
       <label >Tout séléctionner</label>
-      <button class="mybutton" *click="undo"  >undo</button>
-      <button class="mybutton" (click)="redo"  >redo</button>
+      <a type="button" class="mybutton" (click)="retour()"  >undo</a>
+      <a type="button" class="mybutton" (click)="revenir()"  >redo</a>
     </div>
     <ul class="todo-list">
       <li *ngFor="let e of TDL.items, index as i"  >
@@ -42,7 +42,7 @@
         <a class="filterCompleted" (click)="_f = fFait" [ngClass]="_f == fFait?'selected':''" >Complétés</a>
       </li>
     </ul>
-    <button class="clear-completed">Supprimer cochées</button>
+    <button class="clear-completed" (click)="SupprAllCheck(TDL)" >Supprimer cochées</button>
   </footer>
 </section>
 
