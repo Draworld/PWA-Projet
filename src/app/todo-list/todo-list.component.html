@@ -15,9 +15,10 @@
   <section class="main">
     <div class="view">
       <input class="toggle"
-             onChange="updateAll(true,TDL)"
+             (change)="$event ? updateAll({isDone: $event},TDL) : updateAll({isDone: $event},TDL)"
                 type="checkbox"
-                name="toggleAll" />
+                name="toggleAll"
+             [checked]="getNumberItems()==0" />
       <label >Tout séléctionner</label>
     </div>
     <ul class="todo-list">

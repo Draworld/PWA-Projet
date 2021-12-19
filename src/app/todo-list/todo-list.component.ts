@@ -12,6 +12,7 @@ type FctFilter = (item: TodoItem) => boolean;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoListComponent implements OnInit {
+  public allSelected = false;
   get f(): (e: TodoItem) => boolean {
     return this._f;
   }
@@ -54,7 +55,6 @@ export class TodoListComponent implements OnInit {
     return item.isDone;
   }
   public getNumberItems = (): number => {
-    console.log("le nombre de items " + this.service.getTotalCount());
     return this.service.getTotalCount();
   }
   ngOnInit(): void {
