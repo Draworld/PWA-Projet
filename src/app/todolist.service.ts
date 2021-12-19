@@ -23,12 +23,22 @@ export class TodolistService {
   readonly observable = this.subj.asObservable();
   private previous: TodoList[] = [];
   private futures: TodoList[] = [];
+  public totalCount = 0 ;
 
   constructor() {
     this.managePersistency();
     this.manageUndoRedo();
+    this.observable.subscribe(x => {
+      for (let item : TodoItem in x.items) {
+        if (item.isDone) {
+          this.totalCount++;
+        }
+      }
+    } );
   }
-
+  getTotalCount(): number{
+    return this.totalCount as number;
+  }
   append(...labels: Readonly<string[]>): this {
     const L: TodoList = this.subj.getValue();
     this.subj.next({

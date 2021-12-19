@@ -13,26 +13,30 @@
     </form>
   </header>
   <section class="main">
-    <input class="toggle-all"
-           type="checkbox"
-           name="toggleAll" />
+    <div class="view">
+      <input class="toggle"
+             onChange="updateAll(true,TDL)"
+                type="checkbox"
+                name="toggleAll" />
+      <label >Tout séléctionner</label>
+    </div>
     <ul class="todo-list">
-      <li *ngFor="let e of TDL.items, index as i" [class.editing]="edition.isEditing" >
-        <app-todo-item [Data]="e" (updateEvt)="uptdateVal($event,e)" (removeEvt)="supprItem(e)"  #edition></app-todo-item>
+      <li *ngFor="let e of TDL.items, index as i"  >
+        <app-todo-item *ngIf="_f(e)" [Data]="e" (updateEvt)="uptdateVal($event,e)" (removeEvt)="supprItem(e)"  #edition></app-todo-item>
       </li>
     </ul>
   </section>
   <footer class="footer">
-    <span class="todo-count"><strong></strong> restantes</span>
+    <span class="todo-count"><strong></strong>{{getNumberItems()}} restantes</span>
     <ul class="filters">
       <li>
-        <a class="filterAll" (click)="f = fALL">Tous</a>
+        <a class="filterAll" (click)="_f= Tous" [ngClass]="_f == Tous?'selected':''">Tous</a>
       </li>
       <li>
-        <a class="filterActives" (click)="f = fALL">Actifs</a>
+        <a class="filterActives" (click)="_f = fAFaire" [ngClass]="_f == fAFaire?'selected':''">Actifs</a>
       </li>
       <li>
-        <a class="filterCompleted" (click)="f = fALL">Complétés</a>
+        <a class="filterCompleted" (click)="_f = fFait" [ngClass]="_f == fFait?'selected':''" >Complétés</a>
       </li>
     </ul>
     <button class="clear-completed">Supprimer cochées</button>
