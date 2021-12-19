@@ -15,11 +15,13 @@
   <section class="main">
     <div class="view">
       <input class="toggle"
-             (change)="$event ? updateAll({isDone: $event},TDL) : updateAll({isDone: $event},TDL)"
+             (change)="$event ? updateAll({isDone: $event},TDL) : null"
                 type="checkbox"
                 name="toggleAll"
              [checked]="getNumberItems()==0" />
       <label >Tout séléctionner</label>
+      <button class="mybutton" *click="undo"  >undo</button>
+      <button class="mybutton" (click)="redo"  >redo</button>
     </div>
     <ul class="todo-list">
       <li *ngFor="let e of TDL.items, index as i"  >

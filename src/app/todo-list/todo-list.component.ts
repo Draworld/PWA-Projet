@@ -57,6 +57,10 @@ export class TodoListComponent implements OnInit {
   public getNumberItems = (): number => {
     return this.service.getTotalCount();
   }
+  public undo = (): TodolistService =>
+    this.service = this.service.undo()
+  public redo = (): TodolistService =>
+    this.service = this.service.redo()
   ngOnInit(): void {
   }
 
