@@ -29,8 +29,9 @@ export class TodolistService {
     this.managePersistency();
     this.manageUndoRedo();
     this.observable.subscribe(x => {
-      for (let item : TodoItem in x.items) {
-        if (item.isDone) {
+      this.totalCount = 0 ;
+      for (let item  of x.items) {
+        if (!item.isDone) {
           this.totalCount++;
         }
       }
