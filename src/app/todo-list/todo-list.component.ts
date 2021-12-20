@@ -95,6 +95,7 @@ export class TodoListComponent implements OnInit {
   // met a jour le qrcode
   public upQrcode = (TDL: TodoList ): void => {
     this.TodolistJson = tdlToString(TDL);
+    alert('QRCODE Actualisé');
   }
   ngOnInit(): void {
   }
