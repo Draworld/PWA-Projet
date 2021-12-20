@@ -17,7 +17,7 @@ puis allez sur http://localhost:4200/.  l'applicationn se recharge toute seule.
 
 ## Base du projet
 
-Pour les bases de l'application Nous nous devions reproduire le TP3 du projet https://github.com/Flo-UGA/PWA-TP3. Même si j'ai eu quelque problème notament avec la flèche qui sert de toggle all qui avait disparue et que je n'ai pu remettre que bien plus tard. J'ai passez aussi enormément de temps sur la modification des items, Ce n'est que la semaine dernière que j'ai reussi a la faire fonctionner ce qui a ralentie ma progression.
+Pour les bases de l'application Nous nous devions reproduire le TP3 du projet https://github.com/Flo-UGA/PWA-TP3. Même si j'ai eu quelque problème notament avec la flèche qui sert de toggle all qui avait disparue et que je n'ai pu remettre que bien plus tard. J'ai passez enormément de temps sur la modification des items, Ce n'est que la semaine dernière que j'ai reussi à la faire fonctionner ce qui a repousser ma progression dans le reste du Projet.
 
 ## fonction ajouter à la Todolist
 
