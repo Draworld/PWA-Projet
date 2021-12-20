@@ -87,9 +87,13 @@ export class TodoListComponent implements OnInit {
     console.log('dans revenir');
     return this.service = this.service.redo();
   }
-  // fait appartaire un qrcode et met a jour les valeurs QrCode
+  // fait appartaire ou disparaitre un qrcode et met a jour les valeurs QrCode
   public MkQrcode = (TDL: TodoList ): void => {
     this.QrCode = !this.QrCode;
+    this.TodolistJson = tdlToString(TDL);
+  }
+  // met a jour le qrcode
+  public upQrcode = (TDL: TodoList ): void => {
     this.TodolistJson = tdlToString(TDL);
   }
   ngOnInit(): void {

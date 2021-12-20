@@ -45,8 +45,12 @@
     <button class="clear-completed" (click)="SupprAllCheck(TDL)" >Supprimer cochées</button>
 
   </footer>
-  <div><a type="button" class="button2 clear-completed" (click)="MkQrcode(TDL)" [ngClass]="QrCode?'selected':''" >qrcode</a>
-  <qrcode *ngIf="QrCode" [qrdata]="TodolistJson" [width]="300" [errorCorrectionLevel]="'M'" ></qrcode>
+  <div>
+    <a type="button" class="mybutton clear-completed" [ngStyle]="{'color': QrCode? 'red':'green','font':'small-caps bold 24px/1 sans-serif' }" (click)="MkQrcode(TDL)" [ngClass]="QrCode?'selected':''" >qrcode</a>
+    <div *ngIf="QrCode">
+      <a type="button" class="mybutton2 clear-completed" [ngStyle]="{'color':'green','font':'small-caps bold 24px/1 sans-serif' }" (click)="upQrcode(TDL)"  >actualiser</a>
+      <qrcode  [qrdata]="TodolistJson" [width]="300" [errorCorrectionLevel]="'M'" ></qrcode>
+    </div>
   </div>
 </section>
 
