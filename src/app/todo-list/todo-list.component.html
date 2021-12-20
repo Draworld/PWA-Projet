@@ -9,7 +9,7 @@
              name="newTitreInput"
              class="edit" [ngStyle]="{'display':titreEditing?'unset':'none'}" [ngModel]="TDL.label">
     </form>
-    <form (ngSubmit)="append(newToDo.value)">
+    <form #myForm="ngForm"  (ngSubmit)="append(newToDo.value) ; newToDo.value=''">
       <input name="newTodoInput"
              #newToDo
              class="new-todo"
@@ -24,9 +24,9 @@
                 type="checkbox"
                 name="toggleAll"
              [checked]="getNumberItems()==0" />
-      <label >Tout séléctionner</label>
-      <a type="button" class="mybutton" (click)="retour()"  >undo</a>
-      <a type="button" class="mybutton" (click)="revenir()"  >redo</a>
+      <label [ngStyle]="{'font':'small-caps bold 20px/1 sans-serif' }" >Tout séléctionner</label>
+      <a type="button" class="mybutton" [ngStyle]="{'color':'red','font':'small-caps bold 20px/1 sans-serif' }" (click)="retour()"  >undo</a>
+      <a type="button" class="mybutton" [ngStyle]="{'color':'green','font':'small-caps bold 20px/1 sans-serif' }" (click)="revenir()"  >redo</a>
     </div>
     <ul class="todo-list">
       <li *ngFor="let e of TDL.items, index as i"  >

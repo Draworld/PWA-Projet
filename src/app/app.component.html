@@ -27,8 +27,8 @@
     <input type="button" (click)="supprItem(e)" value="Supprimer">
   </li>
 </ul>
--->
-<h2> La version un peu plus propre du code</h2>
+
+<h2> version ancienne pour test</h2>
 <ul *ngIf="obsTodoList|async as TDL" #list >
   <li *ngFor="let e of TDL.items, index as i">
   {{e.label}}
@@ -39,4 +39,4 @@
     <input type="button" (click)="supprItem(e)" value="Supprimer"/>
   </li>
 </ul>
-
+-->
