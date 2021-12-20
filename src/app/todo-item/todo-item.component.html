@@ -5,7 +5,7 @@
          [ngModel]="Data.isDone"
          (ngModelChange)="update({isDone : $event})"
          name="done"/>
-  <label  class="text" [ngStyle]=" {'text-decoration': Data.isDone? 'line-through':'null'}" (dblclick)="setEditing(true)">{{Data.label}}</label>
+  <label class="text" *ngIf="!isEditing" [ngStyle]=" {'text-decoration': Data.isDone? 'line-through':'null'} " (dblclick)="setEditing(true)">{{Data.label}}</label>
   <button class="destroy" (click)="remove()"></button>
 </div>
 <form (ngSubmit)="update({label: newTextInput.value})">
