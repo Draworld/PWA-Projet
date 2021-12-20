@@ -22,10 +22,10 @@ Pour les bases de l'application Nous nous devions reproduire le TP3 du projet ht
 ## fonction ajouter
 
 ### Undo/Redo
-j'ai ajouter 2 bouton bien visible qui permette grace à des fonction fournit dans le projet et des sauvgarde des etats précédant et futur (voir service todoliste) de faire des retour arrière et refaire la dernière action annulé.
+J'ai ajouter 2 bouton bien visible qui permette grace à des fonction fournit dans le projet et des sauvgarde des etats précédant et futur (voir service todoliste) de faire des retour arrière et refaire la dernière action annulé.
 
 ### tout effasser
-j'ai rajouter un bouton lié a une fonction qui remove tout les éléments dans la Todolist actuel.
+J'ai rajouter un bouton lié a une fonction qui remove tout les éléments dans la Todolist actuel.
 
 ### Modification du nom de la todolist
 J'ai rajouter un formulaire ainsi qu'une fonction dans le composant ainsi que dans le service qui permet de modifier le label de la todolist et donc le titre.
