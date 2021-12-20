@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef} from '@angular/core';
 import { Observable } from 'rxjs';
 import {TodoList, TodoItem, TodolistService, tdlToString} from '../todolist.service';
 
@@ -12,6 +12,8 @@ type FctFilter = (item: TodoItem) => boolean;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoListComponent implements OnInit {
+  @ViewChild('newTextInput') newTextInput!: ElementRef<HTMLInputElement>;
+
   public allSelected = false;
   // la valeur a placer dans le qrcode
   public TodolistJson: any;
@@ -24,6 +26,7 @@ export class TodoListComponent implements OnInit {
   set f(value: (e: TodoItem) => boolean) {
     this._f = this.Tous;
   }
+  public titreEditing = false;
   constructor(service: TodolistService) {
     this.service = service;
     this.TodolistJson = 'valeur TodolistJson pas instancié';
@@ -34,7 +37,10 @@ export class TodoListComponent implements OnInit {
   // sert a injecter le service todolist
   service: TodolistService;
 
-
+  updateLabel(label: string): void{
+    this.service.updateLabel(label);
+    this.setEditing(false);
+  }
   append(label: string): void {
     this.service.append(label);
   }
@@ -96,6 +102,14 @@ export class TodoListComponent implements OnInit {
   public upQrcode = (TDL: TodoList ): void => {
     this.TodolistJson = tdlToString(TDL);
     alert('QRCODE Actualisé');
+  }
+  setEditing(b: boolean): void {
+    this.titreEditing = b;
+    if (b) {
+      requestAnimationFrame(
+        () => this.newTextInput.nativeElement.focus()
+      );
+    }
   }
   ngOnInit(): void {
   }

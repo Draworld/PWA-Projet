@@ -8,7 +8,7 @@ export interface TodoItem {
 }
 
 export interface TodoList {
-  readonly label: string;
+  label: string;
   readonly items: Readonly<TodoItem[]>;
 }
 
@@ -71,7 +71,13 @@ export class TodolistService {
     }
     return this;
   }
-
+  updateLabel(label: string): this {
+    if (label !== '') {
+      this.subj.getValue();
+      this.current.label = label;
+    }
+    return this;
+  }
   undo(): this {
     if (this.previous.length > 0) {
       this.subj.next(this.previous[this.previous.length - 1]);

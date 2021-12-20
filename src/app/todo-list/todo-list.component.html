@@ -3,7 +3,12 @@
 <!-- Q1) Pour avoir un visuel -->
 <section class="todoapp" *ngIf="obsTodoList|async as TDL" #list>
   <header class="header">
-    <h1>{{TDL.label}}</h1> <!-- Le label de la liste -->
+    <h1 (dblclick)="setEditing(true)">{{TDL.label}}</h1> <!-- Le label de la liste -->
+    <form (ngSubmit)="updateLabel(newTitreInput.value)">
+      <input #newTitreInput
+             name="newTitreInput"
+             class="edit" [ngStyle]="{'display':titreEditing?'unset':'none'}" [ngModel]="TDL.label">
+    </form>
     <form (ngSubmit)="append(newToDo.value)">
       <input name="newTodoInput"
              #newToDo
