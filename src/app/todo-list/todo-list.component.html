@@ -14,17 +14,18 @@
              #newToDo
              class="new-todo"
              placeholder="Que faire?"
-             autofocus #lab />
+             autofocus #lab/>
     </form>
   </header>
   <section class="main">
     <div class="view">
-      <input class="toggle"
-             (change)="$event ? updateAll({isDone: $event},TDL) : null"
+      <input class="toggleAll"
                 type="checkbox"
                 name="toggleAll"
-             [checked]="getNumberItems()==0" />
-      <label [ngStyle]="{'font':'small-caps bold 20px/1 sans-serif' }" >Tout séléctionner</label>
+              #toggleAll
+             [checked]="getNumberItems()==0"
+             [ngStyle]="{'display' : 'none'}"/>
+      <label (click)="$event ? updateAll({isDone: $event},TDL) : null" [ngStyle]="{'font':'small-caps bold 20px/1 sans-serif' }" class="fleche" ></label>
       <a type="button" class="mybutton" [ngStyle]="{'color':'red','font':'small-caps bold 20px/1 sans-serif' }" (click)="retour()"  >undo</a>
       <a type="button" class="mybutton" [ngStyle]="{'color':'green','font':'small-caps bold 20px/1 sans-serif' }" (click)="revenir()"  >redo</a>
     </div>
@@ -57,6 +58,7 @@
       <qrcode  [qrdata]="TodolistJson" [width]="300" [errorCorrectionLevel]="'M'" ></qrcode>
     </div>
   </div>
+  <a type="button" class="mybutton2 clear-completed" [ngStyle]="{'color':'red','font':'small-caps bold 24px/1 sans-serif' }" (click)="TouSupprimer(TDL)"  >Supprimer Todolist</a>
 </section>
 
 

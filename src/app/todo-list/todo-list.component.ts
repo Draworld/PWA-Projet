@@ -65,6 +65,11 @@ export class TodoListComponent implements OnInit {
       if (item.isDone) {this.service.remove(item); }
     }
   }
+  TouSupprimer( TDL: TodoList): void{
+    for (let item of TDL.items) {
+      this.service.remove(item);
+    }
+  }
   // fonction pour affichage de tout
   public Tous: FctFilter = (item): boolean => {
     return true;
