@@ -73,18 +73,14 @@ export class TodolistService {
   }
 
   undo(): this {
-    console.log("on est dans undo");
     if (this.previous.length > 0) {
-      console.log("on est dans undo");
       this.subj.next(this.previous[this.previous.length - 1]);
     }
     return this;
   }
 
   redo(): this {
-    console.log("on est dans redo");
     if (this.futures.length > 0) {
-      console.log("on est dans redo 2");
       this.subj.next(this.futures[this.futures.length - 1]);
     }
     return this;

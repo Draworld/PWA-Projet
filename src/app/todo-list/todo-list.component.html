@@ -43,7 +43,11 @@
       </li>
     </ul>
     <button class="clear-completed" (click)="SupprAllCheck(TDL)" >Supprimer cochées</button>
+
   </footer>
+  <div><a type="button" class="button2 clear-completed" (click)="MkQrcode(TDL)" [ngClass]="QrCode?'selected':''" >qrcode</a>
+  <qrcode *ngIf="QrCode" [qrdata]="TodolistJson" [width]="300" [errorCorrectionLevel]="'M'" ></qrcode>
+  </div>
 </section>
 
 

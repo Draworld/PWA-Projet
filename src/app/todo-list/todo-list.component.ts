@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
-import { TodoList, TodoItem, TodolistService } from '../todolist.service';
+import {TodoList, TodoItem, TodolistService, tdlToString} from '../todolist.service';
 
 type FctFilter = (item: TodoItem) => boolean;
 
@@ -13,6 +13,11 @@ type FctFilter = (item: TodoItem) => boolean;
 })
 export class TodoListComponent implements OnInit {
   public allSelected = false;
+  // la valeur a placer dans le qrcode
+  public TodolistJson: any;
+  // afficher ou non le qrcode
+  public QrCode = false;
+  // fonction de filtrage modifié plus bas
   get f(): (e: TodoItem) => boolean {
     return this._f;
   }
@@ -21,6 +26,7 @@ export class TodoListComponent implements OnInit {
   }
   constructor(service: TodolistService) {
     this.service = service;
+    this.TodolistJson = 'valeur TodolistJson pas instancié';
   }
   get obsTodoList(): Observable<TodoList> {
     return this.service.observable;
@@ -73,13 +79,18 @@ export class TodoListComponent implements OnInit {
   }
  // fonction retour arrière
   public retour = (): TodolistService => {
-    console.log("dans retour");
+    console.log('dans retour');
     return this.service = this.service.undo();
   }
   // fonction retour avant
   public revenir = (): TodolistService => {
-    console.log("dans revenir");
+    console.log('dans revenir');
     return this.service = this.service.redo();
+  }
+  // fait appartaire un qrcode et met a jour les valeurs QrCode
+  public MkQrcode = (TDL: TodoList ): void => {
+    this.QrCode = !this.QrCode;
+    this.TodolistJson = tdlToString(TDL);
   }
   ngOnInit(): void {
   }
