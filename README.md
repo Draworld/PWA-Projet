@@ -28,7 +28,7 @@ J'ai ajouter 2 bouton bien visible qui permettent grace à des fonction fournit 
 J'ai rajouter un bouton lié a une fonction qui remove tout les éléments dans la Todolist actuel en parcourant la todolist passez dans la fonction.
 
 ### Modification du nom de la todolist
-J'ai rajouter un formulaire ainsi qu'une fonction dans le composant ainsi que dans le service qui permet de modifier le label de la todolist et donc le titre.
+J'ai rajouter un formulaire ainsi qu'une fonction dans le composant ainsi que dans le service qui permet de modifier le label de la todolist et donc le titre. J'ai du crée une nouvelle fonction car l'update ne prener pas en compte le label de la todolist.
 
 ### création d'un QRCODE pour permettre la copy de Todolist
 Grace au module Angularx-qrcore nous avons un élément qrcode qui transmet la todolist JSON sous forme de string. Pour l'afficher il suffit de cliqué sur le bouton QRCODE.
