@@ -1,6 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef} from '@angular/core';
 import { Observable } from 'rxjs';
-import {TodoList, TodoItem, TodolistService, tdlToString} from '../todolist.service';
+import {TodoList, TodoItem, TodolistService, tdlToString, strToTdl} from '../todolist.service';
 
 type FctFilter = (item: TodoItem) => boolean;
 
@@ -13,8 +13,8 @@ type FctFilter = (item: TodoItem) => boolean;
 })
 export class TodoListComponent implements OnInit {
   @ViewChild('newTextInput') newTextInput!: ElementRef<HTMLInputElement>;
-
-  public allSelected = false;
+  // affiche ou non l'encart pour remplacé la Todolist
+  public remplacer = false;
   // la valeur a placer dans le qrcode
   public TodolistJson: any;
   // afficher ou non le qrcode
@@ -107,6 +107,13 @@ export class TodoListComponent implements OnInit {
   public upQrcode = (TDL: TodoList ): void => {
     this.TodolistJson = tdlToString(TDL);
     alert('QRCODE Actualisé');
+  }
+  public remplacerTodolist = (TDLstring: string ): void => {
+    let TDLplus = strToTdl(TDLstring);
+    this.service.replace(TDLplus);
+  }
+  setRemlacer(): void{
+    this.remplacer = !this.remplacer;
   }
   setEditing(b: boolean): void {
     this.titreEditing = b;

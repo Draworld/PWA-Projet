@@ -5,6 +5,7 @@ export interface TodoItem {
   readonly label: string;
   readonly isDone: boolean;
   readonly id: number;
+  readonly file: string;
 }
 
 export interface TodoList {
@@ -47,9 +48,11 @@ export class TodolistService {
       items: [
         ...L.items,
         ...labels.filter(l => l !== '').map(
-          label => ({label, isDone: false, id: idItem++})
+          label => ({label, isDone: false, id: idItem++, file: 'rien'}),
+
         )
-      ]
+      ],
+
     });
     return this;
   }
@@ -60,7 +63,10 @@ export class TodolistService {
     this.subj.next(NL);
     return this;
   }
-
+  replace(TDL: TodoList): this{
+    this.current = TDL;
+    return this;
+  }
   update(data: Partial<TodoItem>, ...items: Readonly<TodoItem[]>): this {
     if (data.label !== '') {
       const L = this.subj.getValue();

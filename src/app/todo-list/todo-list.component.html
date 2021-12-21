@@ -57,6 +57,15 @@
       <a type="button" class="mybutton2 clear-completed" [ngStyle]="{'color':'green','font':'small-caps bold 24px/1 sans-serif' }" (click)="upQrcode(TDL)"  >actualiser</a>
       <qrcode  [qrdata]="TodolistJson" [width]="300" [errorCorrectionLevel]="'M'" ></qrcode>
     </div>
+    <a type="button" class="mybutton2 clear-completed" [ngStyle]="{'color':'yellow','font':'small-caps bold 24px/1 sans-serif' }" (click)="setRemlacer()"  >Remplacer La Todolist</a>
+    <div *ngIf="remplacer">
+      <form  (ngSubmit)="remplacerTodolist(remplaceTodoList.value)">
+        <input  #remplaceTodoList
+               name="remplaceTodoList"
+               class="edit" >
+      </form>
+    </div>
+
   </div>
   <a type="button" class="mybutton2 clear-completed" [ngStyle]="{'color':'red','font':'small-caps bold 24px/1 sans-serif' }" (click)="TouSupprimer(TDL)"  >Supprimer Todolist</a>
 </section>
