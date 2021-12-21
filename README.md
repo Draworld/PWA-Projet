@@ -33,6 +33,12 @@ J'ai rajouter un formulaire ainsi qu'une fonction dans le composant ainsi que da
 ### création d'un QRCODE pour permettre la copy de Todolist
 Grace au module Angularx-qrcore nous avons un élément qrcode qui transmet la todolist JSON sous forme de string. Pour l'afficher il suffit de cliqué sur le bouton QRCODE.
 une fois appuyer l'application met a jour le code et affiche le qrcode, si on modifie la Todolist, j'ai placée un bouton qui permet d'actualisé le qrcode. Même si la todolist ne change pas un message d'alert est affichez pour indiquez que l'action a bien été exécutez. On peut Cacher le qrcode en rappuyant sur le bouton QRCODE ( qui est rouge quand on affiche le qrcode, et vert quand il n'y pas de qrcode affichez).
+pour remplacer notre todolist par le code d'une autre il suffit d'avoir une encart input type text qui reprend le json copier d'un autre qrcode, et d'utilisé la fonction strToTdl puis de remplacer le current TDL dans le service.
+
+## Tentative
+
+### fonction ajout d'image
+J'ai commencé a mettre en place l'import des images dans la branche import-image malheuresement je n'ai pas reussi à updaté les item avec les images (problème due au format des donnée qui ne corresponde pas au donnée voulue),et en partie due au manque de temps provoqué par mon blocage sur la partie modification des items. 
 
 
 
