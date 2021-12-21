@@ -1,4 +1,3 @@
-<p>todo-list works!</p>
 <hr />
 <!-- Q1) Pour avoir un visuel -->
 <section class="todoapp" *ngIf="obsTodoList|async as TDL" #list>
@@ -7,7 +6,8 @@
     <form (ngSubmit)="updateLabel(newTitreInput.value)">
       <input #newTitreInput
              name="newTitreInput"
-             class="edit" [ngStyle]="{'display':titreEditing?'unset':'none'}" [ngModel]="TDL.label">
+             class="edit"
+             [ngStyle]="{'display':titreEditing?'unset':'none'}" [ngModel]="TDL.label">
     </form>
     <form #myForm="ngForm"  (ngSubmit)="append(newToDo.value) ; newToDo.value=''">
       <input name="newTodoInput"

@@ -12,5 +12,6 @@
   <input #newTextInput
          name="newTextInput"
          class="edit" [ngStyle]="{'display':isEditing?'unset':'none'}" [ngModel]="Data.label">
+  <input type="file" (change)="onFileChanged($event)">
 </form>
 

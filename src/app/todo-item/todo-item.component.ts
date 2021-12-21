@@ -20,6 +20,7 @@ export class TodoItemComponent implements OnInit {
   @ViewChild('newTextInput') newTextInput!: ElementRef<HTMLInputElement>;
   // tslint:disable-next-line:variable-name
   private _isEditing = false;
+  private file: File | undefined;
 
   constructor() { }
   get isEditing(): boolean {return this._isEditing; }
@@ -43,6 +44,13 @@ export class TodoItemComponent implements OnInit {
       requestAnimationFrame(
         () => this.newTextInput.nativeElement.focus()
       );
+    }
+  }
+  onFileChanged($event: any): void {
+    if ($event !== null && $event !== undefined){
+      this.file = $event.target.files[0];
+      let JsonFile = JSON.stringify(this.file);
+      this.updateEvt.emit(JsonFile);
     }
   }
 }
